@@ -1,0 +1,2554 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)file:///C:/Users/dron/Downloads/self-awareness_4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Self Awareness">
+<title>Self Awareness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F1E8;
+    --bg-soft: #ECEFE2;
+    --card: #FFFFFF;
+    --input-bg: #FBFCF7;
+    --primary: #6B8E5A;
+    --primary-dark: #3F5641;
+    --primary-light: #9DB58F;
+    --primary-pale: #E8EFD8;
+    --text: #2D3A2E;
+    --text-soft: #5A6657;
+    --text-mute: #8B9484;
+    --border: #D4D8C9;
+    --border-soft: #E5E8DA;
+    --honey: #D4B86A;
+    --warm: #D4A574;
+    --soft-coral: #D4A5A5;
+    --dusty-rose: #C18585;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 8% 4%, rgba(157, 181, 143, 0.18) 0%, transparent 35%),
+      radial-gradient(circle at 92% 96%, rgba(212, 184, 106, 0.12) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(157, 181, 143, 0.04) 0%, transparent 60%);
+  }
+
+  h1, h2, h3, .serif { font-family: 'Fraunces', Georgia, serif; }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 20px 64px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .header-flowers {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-bottom: 14px;
+    color: var(--primary-light);
+  }
+  .header-flowers svg { display: block; }
+  .header-flowers .stem { color: var(--primary); }
+  .header h1 {
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--primary-dark);
+    margin: 0;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .header .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-soft);
+    font-weight: 400;
+    margin-top: 6px;
+  }
+
+  /* DAY NAVIGATION */
+  .day-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 10px 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(63, 86, 65, 0.04);
+  }
+  .day-nav button.arrow {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-pale);
+    color: var(--primary-dark);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .day-nav button.arrow:hover { background: var(--primary-light); color: white; }
+  .day-nav button.arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .day-nav .date-display {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 10px;
+    transition: background 0.15s;
+  }
+  .day-nav .date-display:hover { background: var(--primary-pale); }
+  .day-nav .date-label {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-dark);
+    line-height: 1.2;
+  }
+  .day-nav .date-sub {
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .day-nav input[type="date"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    pointer-events: none;
+  }
+  .day-nav button.today-btn {
+    border: 1px solid var(--primary-light);
+    background: transparent;
+    color: var(--primary-dark);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .day-nav button.today-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* SUMMARY CARDS */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 12px rgba(63, 86, 65, 0.04);
+  }
+  .summary-card h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .summary-card.goal h3 { color: var(--primary); }
+  .summary-card.total h3 { color: var(--primary-dark); }
+  .summary-card .row {
+    font-size: 13px;
+    color: var(--text-soft);
+    padding: 3px 0;
+    display: flex; justify-content: space-between;
+  }
+  .summary-card .row .label { color: var(--text-mute); }
+  .summary-card .row .val { color: var(--text); font-weight: 600; }
+
+  /* STATS BUTTON */
+  .stats-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 22px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(107, 142, 90, 0.25);
+    transition: all 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .stats-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .stats-btn:active { transform: translateY(0); }
+
+  /* DIVIDER */
+  .flower-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 24px 0 18px;
+    color: var(--primary-light);
+  }
+  .flower-divider::before,
+  .flower-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-soft);
+  }
+
+  /* SLOT ROWS */
+  .slot {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 14px 16px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 6px rgba(63, 86, 65, 0.03);
+  }
+  .slot-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 10px;
+  }
+  .slot-header .title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-dark);
+  }
+  .slot-header .flower-mark {
+    color: var(--primary-light);
+    display: flex;
+  }
+  .slot-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 10px;
+  }
+  .field-label {
+    font-size: 11px;
+    color: var(--text-mute);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+  .field input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 8px;
+    font-size: 15px;
+    background: var(--input-bg);
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    transition: border 0.15s, background 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+  }
+  .field.level input {
+    text-align: center;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .field input::placeholder {
+    color: var(--text-mute);
+    opacity: 0.6;
+  }
+  /* Hide spinner */
+  .field input[type="number"]::-webkit-inner-spin-button,
+  .field input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  .field input[type="number"] { -moz-appearance: textfield; }
+
+  /* NOTES */
+  .notes {
+    margin-top: 20px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 6px rgba(63, 86, 65, 0.03);
+  }
+  .notes label {
+    font-size: 13px;
+    color: var(--text-soft);
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .notes textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    background: var(--input-bg);
+    color: var(--text);
+    resize: vertical;
+    min-height: 70px;
+    transition: border 0.15s, background 0.15s;
+  }
+  .notes textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+  }
+
+  /* STATS SCREEN */
+  .stats-screen {
+    display: none;
+  }
+  .stats-screen.active { display: block; }
+  .tracker-screen.hidden { display: none; }
+
+  .back-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    color: var(--primary-dark);
+    border-radius: 999px;
+    padding: 8px 16px 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+    transition: all 0.15s;
+  }
+  .back-btn:hover { background: var(--primary-pale); }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    padding: 4px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tab {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-transform: capitalize;
+    transition: all 0.15s;
+  }
+  .tab.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  .stats-table-wrap {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(63, 86, 65, 0.04);
+  }
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .stats-table th {
+    background: var(--primary-pale);
+    color: var(--primary-dark);
+    font-weight: 600;
+    padding: 10px 6px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-table td {
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text);
+  }
+  .stats-table tr:last-child td { border-bottom: none; }
+  .stats-table .date-cell {
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-align: left;
+    padding-left: 12px;
+    cursor: pointer;
+  }
+  .stats-table .date-cell:hover { background: var(--primary-pale); }
+  .stats-table .total-cell {
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--text-mute);
+  }
+  .empty-state .flower-big {
+    color: var(--primary-light);
+    margin-bottom: 12px;
+  }
+  .empty-state .text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  /* DATA MANAGEMENT */
+  .data-section {
+    margin-top: 28px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 1px 6px rgba(63, 86, 65, 0.03);
+  }
+  .data-section h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .data-section .data-note {
+    font-size: 12px;
+    color: var(--text-mute);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .data-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .data-btn {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    background: var(--input-bg);
+    color: var(--text);
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    transition: all 0.15s;
+  }
+  .data-btn:hover { background: white; }
+  .data-btn.export { color: var(--primary-dark); border-color: var(--primary-light); }
+  .data-btn.export:hover { background: var(--primary-pale); }
+  .data-btn.import { color: var(--primary-dark); border-color: var(--border); }
+  .data-btn.import:hover { background: var(--bg-soft); }
+  .data-btn.reset { color: var(--dusty-rose); border-color: var(--soft-coral); }
+  .data-btn.reset:hover { background: #F5E5E5; }
+  .data-btn svg { display: block; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--primary-dark);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(63, 86, 65, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease-out;
+    z-index: 1000;
+    max-width: 90vw;
+    text-align: center;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .toast.warn { background: var(--dusty-rose); }
+
+  /* YEAR HEATMAP */
+  .view-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 18px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    padding: 4px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .view-tab {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .view-tab.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  .metric-toggle {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    justify-content: center;
+  }
+  .metric-btn {
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .metric-btn:hover { background: var(--primary-pale); }
+  .metric-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .year-heatmap {
+    display: grid;
+    grid-template-columns: 32px repeat(12, 1fr);
+    gap: 1px;
+    background: var(--border-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+  .heat-cell {
+    background: white;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    padding: 2px;
+    color: var(--text);
+  }
+  .heat-cell.header {
+    background: var(--primary-pale);
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .heat-cell.day-num {
+    background: var(--bg-soft);
+    color: var(--primary-dark);
+    font-weight: 600;
+    font-size: 10px;
+  }
+  .heat-cell.empty {
+    background: #F5F5F1;
+  }
+  .heat-cell.clickable { cursor: pointer; }
+  .heat-cell.clickable:hover {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+    z-index: 1;
+  }
+
+  .heat-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-soft);
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+  .heat-legend .label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--text-mute);
+    margin-right: 4px;
+  }
+  .heat-legend .swatch {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .heat-legend .box {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid var(--border-soft);
+    display: inline-block;
+  }
+
+  @media (max-width: 540px) {
+    .year-heatmap {
+      grid-template-columns: 22px repeat(12, 1fr);
+      font-size: 10px;
+    }
+    .heat-cell { min-height: 20px; padding: 1px; }
+    .heat-cell.header, .heat-cell.day-num { font-size: 9px; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 540px) {
+    .container { padding: 20px 14px 48px; }
+    .header h1 { font-size: 32px; }
+    .slot-grid {
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 8px;
+    }
+    .field.level { grid-column: span 1; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .stats-table { font-size: 11px; }
+    .stats-table th, .stats-table td { padding: 6px 3px; }
+    .day-nav .date-label { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TRACKER SCREEN -->
+<div class="container tracker-screen" id="tracker-screen">
+
+  <header class="header">
+    <div class="header-flowers" aria-hidden="true">
+      <!-- small flower -->
+      <svg width="22" height="22" viewBox="0 0 32 32">
+        <g fill="currentColor">
+          <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+          <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+          <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+          <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+        </g>
+        <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+      </svg>
+      <!-- leaf stem -->
+      <svg class="stem" width="40" height="22" viewBox="0 0 60 32">
+        <path d="M5 16 Q 30 6, 55 16" stroke="currentColor" stroke-width="1.5" fill="none"></path>
+        <ellipse cx="20" cy="10" rx="6" ry="2.5" fill="currentColor" transform="rotate(-25 20 10)"></ellipse>
+        <ellipse cx="40" cy="10" rx="6" ry="2.5" fill="currentColor" transform="rotate(25 40 10)"></ellipse>
+      </svg>
+      <!-- small flower -->
+      <svg width="22" height="22" viewBox="0 0 32 32">
+        <g fill="currentColor">
+          <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+          <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+          <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+          <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+        </g>
+        <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+      </svg>
+    </div>
+    <h1>Self Awareness</h1>
+    <div class="subtitle">Emotional &amp; Thought Tracking</div>
+  </header>
+
+  <!-- Day Navigation with Date Picker -->
+  <div class="day-nav">
+    <button class="arrow" id="prev-day" aria-label="Previous day">‹</button>
+    <div class="date-display" id="date-display">
+      <div class="date-label" id="date-label">Today</div>
+      <div class="date-sub" id="date-sub">Jun 21</div>
+      <input type="date" id="date-picker">
+    </div>
+    <button class="arrow" id="next-day" aria-label="Next day" disabled="">›</button>
+    <button class="today-btn" id="today-btn">Today</button>
+  </div>
+
+  <!-- Goal vs Total -->
+  <div class="summary-grid">
+    <div class="summary-card goal">
+      <h3>
+        <svg width="14" height="14" viewBox="0 0 32 32" aria-hidden="true">
+          <g fill="currentColor">
+            <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+            <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+            <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+            <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+          </g>
+          <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+        </svg> Today's Goal</h3>
+      <div class="row"><span class="label">Rumination</span><span class="val">156.75 min</span></div>
+    </div>
+    <div class="summary-card total">
+      <h3>Today's Total</h3>
+      <div class="row"><span class="label">Rumination</span><span class="val" id="total-rumination">0 min</span></div>
+    </div>
+  </div>
+
+  <button class="stats-btn" id="show-stats-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M3 3v18h18"></path>
+      <path d="M7 14l4-4 4 4 5-5"></path>
+    </svg>
+    View Statistics
+  </button>
+
+  <div class="flower-divider" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg>
+  </div>
+
+  <div id="slots-container">
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg></span>
+            <span class="title">Wake Up — 9 AM</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any" data-slot="wake" data-field="rumination" value="" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="wake" data-field="anxiety" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="wake" data-field="stress" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+          </div>
+        </div>
+      
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg></span>
+            <span class="title">9 AM — 12 PM</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any" data-slot="9-12" data-field="rumination" value="" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="9-12" data-field="anxiety" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="9-12" data-field="stress" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+          </div>
+        </div>
+      
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg></span>
+            <span class="title">12 PM — 3 PM</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any" data-slot="12-3" data-field="rumination" value="" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="12-3" data-field="anxiety" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="12-3" data-field="stress" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+          </div>
+        </div>
+      
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg></span>
+            <span class="title">3 PM — 6 PM</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any" data-slot="3-6" data-field="rumination" value="" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="3-6" data-field="anxiety" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="3-6" data-field="stress" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+          </div>
+        </div>
+      
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg></span>
+            <span class="title">6 PM — 9 PM</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any" data-slot="6-9" data-field="rumination" value="" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="6-9" data-field="anxiety" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="6-9" data-field="stress" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+          </div>
+        </div>
+      
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+        <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+        <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+        <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+    </svg></span>
+            <span class="title">9 PM — Morning</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any" data-slot="9-m" data-field="rumination" value="" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="9-m" data-field="anxiety" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10" data-slot="9-m" data-field="stress" value="" placeholder="–" style="background: transparent; color: #2D3A2E;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <div class="notes">
+    <label>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+      </svg>
+      Notes for the day
+    </label>
+    <textarea id="notes-input" placeholder="Anything worth remembering about today…"></textarea>
+  </div>
+
+  <div class="data-section">
+    <h3>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+      </svg>
+      Data &amp; Backup
+    </h3>
+    <div class="data-note">
+      Your entries are saved in this browser only. Export regularly to keep a backup, or to move data to another device.
+    </div>
+    <div class="data-buttons">
+      <button class="data-btn export" id="export-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        Export
+      </button>
+      <button class="data-btn import" id="import-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Import
+      </button>
+      <button class="data-btn reset" id="reset-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+          <path d="M10 11v6M14 11v6"></path>
+        </svg>
+        Reset
+      </button>
+    </div>
+    <input type="file" id="import-file" accept=".json,application/json" style="display:none">
+  </div>
+</div>
+
+<div class="toast" id="toast">Imported 107 day(s) — replaced</div>
+
+<!-- STATS SCREEN -->
+<div class="container stats-screen" id="stats-screen">
+  <button class="back-btn" id="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    Back
+  </button>
+
+  <header class="header" style="margin-bottom:20px">
+    <div class="header-flowers" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 32 32">
+        <g fill="currentColor">
+          <ellipse cx="16" cy="8" rx="4" ry="5"></ellipse>
+          <ellipse cx="16" cy="24" rx="4" ry="5"></ellipse>
+          <ellipse cx="8" cy="16" rx="5" ry="4"></ellipse>
+          <ellipse cx="24" cy="16" rx="5" ry="4"></ellipse>
+        </g>
+        <circle cx="16" cy="16" r="3.5" fill="#D4B86A"></circle>
+      </svg>
+    </div>
+    <h1 style="font-size:32px">History</h1>
+    <div class="subtitle">Looking back, gently</div>
+  </header>
+
+  <div class="view-tabs" id="view-tabs">
+    <button class="view-tab active" data-view="daily">Daily Log</button>
+    <button class="view-tab" data-view="year">Year View</button>
+  </div>
+
+  <div id="stats-content">
+      <div class="stats-table-wrap">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th style="text-align:left; padding-left:12px">Date</th>
+              <th>Total</th>
+              <th>W-9</th><th>9-12</th><th>12-3</th><th>3-6</th><th>6-9</th><th>9-M</th>
+              <th>Anxiety</th>
+              <th>Stress</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="date-cell" data-date="2026-06-16" title="Edit this day">Jun 16</td>
+          <td class="total-cell">205</td>
+          <td></td><td>25</td><td>45</td><td>45</td><td>45</td><td>45</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-15" title="Edit this day">Jun 15</td>
+          <td class="total-cell">170</td>
+          <td></td><td>15</td><td>25</td><td>45</td><td>45</td><td>40</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-14" title="Edit this day">Jun 14</td>
+          <td class="total-cell">105</td>
+          <td></td><td>15</td><td>20</td><td>35</td><td>35</td><td></td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-13" title="Edit this day">Jun 13</td>
+          <td class="total-cell">165</td>
+          <td></td><td>35</td><td>35</td><td>45</td><td>50</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-12" title="Edit this day">Jun 12</td>
+          <td class="total-cell">165</td>
+          <td></td><td>20</td><td>25</td><td>25</td><td>35</td><td>60</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-11" title="Edit this day">Jun 11</td>
+          <td class="total-cell">100</td>
+          <td>25</td><td>25</td><td>15</td><td>15</td><td>20</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-10" title="Edit this day">Jun 10</td>
+          <td class="total-cell">170</td>
+          <td>15</td><td>35</td><td>35</td><td>35</td><td>25</td><td>25</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-09" title="Edit this day">Jun 9</td>
+          <td class="total-cell">135</td>
+          <td>10</td><td>25</td><td>20</td><td>25</td><td>30</td><td>25</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-08" title="Edit this day">Jun 8</td>
+          <td class="total-cell">145</td>
+          <td></td><td>15</td><td>15</td><td>35</td><td>45</td><td>35</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-07" title="Edit this day">Jun 7</td>
+          <td class="total-cell">130</td>
+          <td></td><td>25</td><td>25</td><td>25</td><td>20</td><td>35</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-06" title="Edit this day">Jun 6</td>
+          <td class="total-cell">140</td>
+          <td></td><td>35</td><td>35</td><td>35</td><td>35</td><td></td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-05" title="Edit this day">Jun 5</td>
+          <td class="total-cell">210</td>
+          <td></td><td>45</td><td>60</td><td>45</td><td>35</td><td>25</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-04" title="Edit this day">Jun 4</td>
+          <td class="total-cell">210</td>
+          <td>20</td><td>35</td><td>45</td><td>55</td><td>55</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-03" title="Edit this day">Jun 3</td>
+          <td class="total-cell">240</td>
+          <td>25</td><td>35</td><td>50</td><td>50</td><td>50</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-02" title="Edit this day">Jun 2</td>
+          <td class="total-cell">200</td>
+          <td>25</td><td>35</td><td>45</td><td>50</td><td>45</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-06-01" title="Edit this day">Jun 1</td>
+          <td class="total-cell">190</td>
+          <td></td><td>35</td><td>35</td><td>40</td><td>45</td><td>35</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-31" title="Edit this day">May 31</td>
+          <td class="total-cell">235</td>
+          <td></td><td>35</td><td>50</td><td>50</td><td>50</td><td>50</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-30" title="Edit this day">May 30</td>
+          <td class="total-cell">185</td>
+          <td></td><td>35</td><td>35</td><td>35</td><td>40</td><td>40</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-29" title="Edit this day">May 29</td>
+          <td class="total-cell">160</td>
+          <td></td><td>30</td><td>25</td><td>35</td><td>45</td><td>25</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-28" title="Edit this day">May 28</td>
+          <td class="total-cell">190</td>
+          <td></td><td>25</td><td>30</td><td>45</td><td>35</td><td>55</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-27" title="Edit this day">May 27</td>
+          <td class="total-cell">145</td>
+          <td></td><td>20</td><td>25</td><td>35</td><td>30</td><td>35</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-26" title="Edit this day">May 26</td>
+          <td class="total-cell">165</td>
+          <td>15</td><td>20</td><td>20</td><td>20</td><td>45</td><td>45</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-25" title="Edit this day">May 25</td>
+          <td class="total-cell">160</td>
+          <td></td><td>30</td><td>30</td><td>25</td><td>35</td><td>40</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-24" title="Edit this day">May 24</td>
+          <td class="total-cell">215</td>
+          <td>40</td><td>35</td><td>50</td><td>45</td><td>45</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-23" title="Edit this day">May 23</td>
+          <td class="total-cell">240</td>
+          <td>35</td><td>40</td><td>40</td><td>45</td><td>50</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-22" title="Edit this day">May 22</td>
+          <td class="total-cell">200</td>
+          <td>25</td><td>35</td><td>45</td><td>50</td><td>45</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-21" title="Edit this day">May 21</td>
+          <td class="total-cell">185</td>
+          <td></td><td>35</td><td>40</td><td>45</td><td>50</td><td>15</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-20" title="Edit this day">May 20</td>
+          <td class="total-cell">165</td>
+          <td></td><td>35</td><td>40</td><td>45</td><td>45</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-19" title="Edit this day">May 19</td>
+          <td class="total-cell">210</td>
+          <td>30</td><td>35</td><td>40</td><td>35</td><td>40</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-18" title="Edit this day">May 18</td>
+          <td class="total-cell">205</td>
+          <td></td><td>35</td><td>40</td><td>45</td><td>45</td><td>40</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-17" title="Edit this day">May 17</td>
+          <td class="total-cell">255</td>
+          <td></td><td>45</td><td>40</td><td>60</td><td>65</td><td>45</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-16" title="Edit this day">May 16</td>
+          <td class="total-cell">205</td>
+          <td>15</td><td>35</td><td>35</td><td>40</td><td>35</td><td>45</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-15" title="Edit this day">May 15</td>
+          <td class="total-cell">180</td>
+          <td></td><td>35</td><td>30</td><td>45</td><td>40</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-14" title="Edit this day">May 14</td>
+          <td class="total-cell">140</td>
+          <td></td><td>20</td><td>25</td><td>25</td><td>35</td><td>35</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-13" title="Edit this day">May 13</td>
+          <td class="total-cell">145</td>
+          <td></td><td>15</td><td>20</td><td>30</td><td>35</td><td>45</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-12" title="Edit this day">May 12</td>
+          <td class="total-cell">100</td>
+          <td>15</td><td>20</td><td>15</td><td>20</td><td>15</td><td>15</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-11" title="Edit this day">May 11</td>
+          <td class="total-cell">140</td>
+          <td></td><td>15</td><td>20</td><td>40</td><td>30</td><td>35</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-10" title="Edit this day">May 10</td>
+          <td class="total-cell">95</td>
+          <td></td><td>15</td><td>15</td><td>20</td><td>20</td><td>25</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-09" title="Edit this day">May 9</td>
+          <td class="total-cell">135</td>
+          <td></td><td>10</td><td>35</td><td>25</td><td>40</td><td>25</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-08" title="Edit this day">May 8</td>
+          <td class="total-cell">85</td>
+          <td></td><td>15</td><td>20</td><td>15</td><td>20</td><td>15</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-07" title="Edit this day">May 7</td>
+          <td class="total-cell">115</td>
+          <td>20</td><td>25</td><td>25</td><td>20</td><td>25</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-06" title="Edit this day">May 6</td>
+          <td class="total-cell">110</td>
+          <td></td><td>20</td><td>30</td><td>25</td><td>35</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-05" title="Edit this day">May 5</td>
+          <td class="total-cell">140</td>
+          <td>15</td><td>30</td><td>30</td><td>35</td><td>30</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-04" title="Edit this day">May 4</td>
+          <td class="total-cell">150</td>
+          <td></td><td>35</td><td>30</td><td>25</td><td>35</td><td>25</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-03" title="Edit this day">May 3</td>
+          <td class="total-cell">155</td>
+          <td>20</td><td>30</td><td>45</td><td>35</td><td>25</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-02" title="Edit this day">May 2</td>
+          <td class="total-cell">205</td>
+          <td></td><td>20</td><td>35</td><td>45</td><td>60</td><td>45</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-05-01" title="Edit this day">May 1</td>
+          <td class="total-cell">140</td>
+          <td></td><td>25</td><td>30</td><td>25</td><td>30</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-30" title="Edit this day">Apr 30</td>
+          <td class="total-cell">150</td>
+          <td></td><td>35</td><td>35</td><td>45</td><td>35</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-29" title="Edit this day">Apr 29</td>
+          <td class="total-cell">145</td>
+          <td></td><td>30</td><td>35</td><td>40</td><td>40</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-28" title="Edit this day">Apr 28</td>
+          <td class="total-cell">190</td>
+          <td></td><td>60</td><td>60</td><td>45</td><td>25</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-27" title="Edit this day">Apr 27</td>
+          <td class="total-cell">460</td>
+          <td></td><td>80</td><td>100</td><td>100</td><td>100</td><td>80</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-26" title="Edit this day">Apr 26</td>
+          <td class="total-cell">175</td>
+          <td></td><td>30</td><td>35</td><td>50</td><td>60</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-25" title="Edit this day">Apr 25</td>
+          <td class="total-cell">165</td>
+          <td></td><td>30</td><td>25</td><td>30</td><td>45</td><td>35</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-24" title="Edit this day">Apr 24</td>
+          <td class="total-cell">160</td>
+          <td>20</td><td>40</td><td>45</td><td>30</td><td>25</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-23" title="Edit this day">Apr 23</td>
+          <td class="total-cell">325</td>
+          <td></td><td>60</td><td>75</td><td>80</td><td>70</td><td>40</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-22" title="Edit this day">Apr 22</td>
+          <td class="total-cell">220</td>
+          <td></td><td>60</td><td>60</td><td>50</td><td>50</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-21" title="Edit this day">Apr 21</td>
+          <td class="total-cell">120</td>
+          <td></td><td>120</td><td></td><td></td><td></td><td></td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+          <td style="background:#FFFFFF; color:#2D3A2E; font-weight:600">0</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-20" title="Edit this day">Apr 20</td>
+          <td class="total-cell">270</td>
+          <td></td><td>30</td><td>60</td><td>60</td><td>50</td><td>70</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-19" title="Edit this day">Apr 19</td>
+          <td class="total-cell">160</td>
+          <td></td><td>30</td><td>45</td><td>35</td><td>50</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-18" title="Edit this day">Apr 18</td>
+          <td class="total-cell">320</td>
+          <td></td><td>55</td><td>65</td><td>100</td><td>100</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-17" title="Edit this day">Apr 17</td>
+          <td class="total-cell">175</td>
+          <td></td><td>30</td><td>40</td><td>45</td><td>40</td><td>20</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-16" title="Edit this day">Apr 16</td>
+          <td class="total-cell">210</td>
+          <td></td><td>60</td><td>40</td><td>50</td><td>60</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-15" title="Edit this day">Apr 15</td>
+          <td class="total-cell">230</td>
+          <td></td><td>30</td><td>45</td><td>60</td><td>65</td><td>30</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-14" title="Edit this day">Apr 14</td>
+          <td class="total-cell">250</td>
+          <td></td><td>80</td><td>45</td><td>60</td><td>65</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-13" title="Edit this day">Apr 13</td>
+          <td class="total-cell">375</td>
+          <td></td><td>45</td><td>90</td><td>100</td><td>80</td><td>60</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-12" title="Edit this day">Apr 12</td>
+          <td class="total-cell">215</td>
+          <td>30</td><td>60</td><td>50</td><td>45</td><td>30</td><td></td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-11" title="Edit this day">Apr 11</td>
+          <td class="total-cell">130</td>
+          <td></td><td>20</td><td>30</td><td>35</td><td>45</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-10" title="Edit this day">Apr 10</td>
+          <td class="total-cell">110</td>
+          <td></td><td>30</td><td>25</td><td>35</td><td>20</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-09" title="Edit this day">Apr 9</td>
+          <td class="total-cell">310</td>
+          <td></td><td>40</td><td>70</td><td>120</td><td>60</td><td>20</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-08" title="Edit this day">Apr 8</td>
+          <td class="total-cell">155</td>
+          <td></td><td>30</td><td>40</td><td>35</td><td>30</td><td>20</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-07" title="Edit this day">Apr 7</td>
+          <td class="total-cell">350</td>
+          <td></td><td>80</td><td>120</td><td>100</td><td>50</td><td></td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-06" title="Edit this day">Apr 6</td>
+          <td class="total-cell">230</td>
+          <td></td><td>30</td><td>60</td><td>50</td><td>70</td><td>20</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-05" title="Edit this day">Apr 5</td>
+          <td class="total-cell">365</td>
+          <td></td><td>100</td><td>90</td><td>85</td><td>90</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-04" title="Edit this day">Apr 4</td>
+          <td class="total-cell">710</td>
+          <td>80</td><td>120</td><td>120</td><td>110</td><td>100</td><td>180</td>
+          <td style="background:#D4A5A5; color:#FFFFFF; font-weight:600">7</td>
+          <td style="background:#D4A5A5; color:#FFFFFF; font-weight:600">7</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-03" title="Edit this day">Apr 3</td>
+          <td class="total-cell">295</td>
+          <td></td><td>60</td><td>60</td><td>45</td><td>70</td><td>60</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-02" title="Edit this day">Apr 2</td>
+          <td class="total-cell">310</td>
+          <td></td><td>30</td><td>60</td><td>100</td><td>80</td><td>40</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-04-01" title="Edit this day">Apr 1</td>
+          <td class="total-cell">205</td>
+          <td></td><td>60</td><td>60</td><td>50</td><td>35</td><td></td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-31" title="Edit this day">Mar 31</td>
+          <td class="total-cell">335</td>
+          <td></td><td>30</td><td>45</td><td>60</td><td>100</td><td>100</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-30" title="Edit this day">Mar 30</td>
+          <td class="total-cell">145</td>
+          <td></td><td>20</td><td>30</td><td>30</td><td>35</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-29" title="Edit this day">Mar 29</td>
+          <td class="total-cell">350</td>
+          <td></td><td>30</td><td>30</td><td>100</td><td>90</td><td>100</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-28" title="Edit this day">Mar 28</td>
+          <td class="total-cell">205</td>
+          <td></td><td>40</td><td>50</td><td>40</td><td>45</td><td>30</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-27" title="Edit this day">Mar 27</td>
+          <td class="total-cell">290</td>
+          <td></td><td>30</td><td>60</td><td>60</td><td>70</td><td>70</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-26" title="Edit this day">Mar 26</td>
+          <td class="total-cell">450</td>
+          <td></td><td>50</td><td>60</td><td>180</td><td>160</td><td></td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-25" title="Edit this day">Mar 25</td>
+          <td class="total-cell">320</td>
+          <td></td><td>20</td><td>80</td><td>60</td><td>80</td><td>80</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-24" title="Edit this day">Mar 24</td>
+          <td class="total-cell">560</td>
+          <td></td><td></td><td>80</td><td>120</td><td>180</td><td>180</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-23" title="Edit this day">Mar 23</td>
+          <td class="total-cell">470</td>
+          <td></td><td>60</td><td>80</td><td>80</td><td>70</td><td>180</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-22" title="Edit this day">Mar 22</td>
+          <td class="total-cell">560</td>
+          <td></td><td>180</td><td>160</td><td>60</td><td>80</td><td>80</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-21" title="Edit this day">Mar 21</td>
+          <td class="total-cell">460</td>
+          <td></td><td>60</td><td>120</td><td>100</td><td>90</td><td>90</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-20" title="Edit this day">Mar 20</td>
+          <td class="total-cell">630</td>
+          <td></td><td></td><td>180</td><td>150</td><td>150</td><td>150</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-19" title="Edit this day">Mar 19</td>
+          <td class="total-cell">500</td>
+          <td></td><td>60</td><td>50</td><td>50</td><td>160</td><td>180</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-18" title="Edit this day">Mar 18</td>
+          <td class="total-cell">620</td>
+          <td></td><td>30</td><td>120</td><td>110</td><td>180</td><td>180</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-17" title="Edit this day">Mar 17</td>
+          <td class="total-cell">320</td>
+          <td></td><td></td><td>100</td><td>80</td><td>70</td><td>70</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+          <td style="background:#E8EFD8; color:#2D3A2E; font-weight:600">1</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-16" title="Edit this day">Mar 16</td>
+          <td class="total-cell">270</td>
+          <td></td><td>60</td><td>50</td><td>40</td><td>40</td><td>80</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-15" title="Edit this day">Mar 15</td>
+          <td class="total-cell">390</td>
+          <td></td><td>60</td><td>100</td><td>80</td><td>80</td><td>70</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-14" title="Edit this day">Mar 14</td>
+          <td class="total-cell">580</td>
+          <td></td><td>60</td><td>180</td><td>120</td><td>120</td><td>100</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-13" title="Edit this day">Mar 13</td>
+          <td class="total-cell">370</td>
+          <td></td><td>20</td><td>60</td><td>80</td><td>100</td><td>110</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-12" title="Edit this day">Mar 12</td>
+          <td class="total-cell">275</td>
+          <td>20</td><td>25</td><td>60</td><td>50</td><td>60</td><td>60</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-11" title="Edit this day">Mar 11</td>
+          <td class="total-cell">540</td>
+          <td></td><td></td><td>160</td><td>160</td><td>120</td><td>100</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-10" title="Edit this day">Mar 10</td>
+          <td class="total-cell">690</td>
+          <td></td><td>120</td><td>140</td><td>140</td><td>150</td><td>140</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-09" title="Edit this day">Mar 9</td>
+          <td class="total-cell">690</td>
+          <td>30</td><td>180</td><td>180</td><td>120</td><td>100</td><td>80</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-08" title="Edit this day">Mar 8</td>
+          <td class="total-cell">675</td>
+          <td>20</td><td>45</td><td>120</td><td>160</td><td>160</td><td>170</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-07" title="Edit this day">Mar 7</td>
+          <td class="total-cell">285</td>
+          <td>20</td><td>20</td><td>60</td><td>80</td><td>60</td><td>45</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-06" title="Edit this day">Mar 6</td>
+          <td class="total-cell">350</td>
+          <td>20</td><td>25</td><td>25</td><td>120</td><td>100</td><td>60</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+          <td style="background:#E8DFB4; color:#2D3A2E; font-weight:600">3</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-05" title="Edit this day">Mar 5</td>
+          <td class="total-cell">200</td>
+          <td>20</td><td>35</td><td>35</td><td>35</td><td>30</td><td>45</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-04" title="Edit this day">Mar 4</td>
+          <td class="total-cell">435</td>
+          <td>25</td><td>60</td><td>70</td><td>90</td><td>70</td><td>120</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+          <td style="background:#D5E2BD; color:#2D3A2E; font-weight:600">2</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-03" title="Edit this day">Mar 3</td>
+          <td class="total-cell">330</td>
+          <td>20</td><td>60</td><td>120</td><td>45</td><td>60</td><td>25</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+          <td style="background:#E0CC8E; color:#2D3A2E; font-weight:600">4</td>
+        </tr>
+      
+        <tr>
+          <td class="date-cell" data-date="2026-03-02" title="Edit this day">Mar 2</td>
+          <td class="total-cell">1035</td>
+          <td>180</td><td>180</td><td>135</td><td>180</td><td>180</td><td>180</td>
+          <td style="background:#D4A574; color:#2D3A2E; font-weight:600">6</td>
+          <td style="background:#D4A574; color:#2D3A2E; font-weight:600">6</td>
+        </tr>
+      </tbody>
+        </table>
+      </div>
+      <div style="text-align:center; color: var(--text-mute); font-size:12px; margin-top:14px; font-family: &#39;Fraunces&#39;, serif; font-style: italic;">
+        Tap a date to jump back and edit that day
+      </div>
+    </div>
+</div>
+
+<script>
+  // ---------- CONFIG ----------
+  const TIME_SLOTS = [
+    { key: 'wake',  label: 'Wake Up — 9 AM',   short: 'W-9'  },
+    { key: '9-12',  label: '9 AM — 12 PM',     short: '9-12' },
+    { key: '12-3',  label: '12 PM — 3 PM',     short: '12-3' },
+    { key: '3-6',   label: '3 PM — 6 PM',      short: '3-6'  },
+    { key: '6-9',   label: '6 PM — 9 PM',      short: '6-9'  },
+    { key: '9-m',   label: '9 PM — Morning',   short: '9-M'  },
+  ];
+
+  const DAILY_GOALS = {
+    rumination: 156.75,
+  };
+
+  const STORAGE_KEY = 'self-awareness-data-v1';
+
+  // ---------- STATE ----------
+  const state = {
+    data: {},
+    currentDate: dateKey(new Date()),
+    screen: 'tracker',
+    statsTab: 'rumination',
+    statsView: 'daily',     // 'daily' | 'year'
+    yearMetric: 'anxiety',  // 'anxiety' | 'stress'
+  };
+
+  // ---------- HELPERS ----------
+  function dateKey(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+  function parseKey(k) {
+    const [y, m, d] = k.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+  function shiftDate(k, days) {
+    const d = parseKey(k);
+    d.setDate(d.getDate() + days);
+    return dateKey(d);
+  }
+  function formatLong(k) {
+    const d = parseKey(k);
+    const today = dateKey(new Date());
+    const yest = dateKey(new Date(Date.now() - 86400000));
+    if (k === today) return 'Today';
+    if (k === yest) return 'Yesterday';
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+  function formatShort(k) {
+    const d = parseKey(k);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+  function emptyDay() {
+    const day = { notes: '' };
+    TIME_SLOTS.forEach(s => {
+      day[s.key] = { rumination: '', anxiety: '', stress: '' };
+    });
+    return day;
+  }
+  function getDay(k) {
+    return state.data[k] || emptyDay();
+  }
+  function ensureDay(k) {
+    if (!state.data[k]) state.data[k] = emptyDay();
+    return state.data[k];
+  }
+  function totalFor(day, field) {
+    let sum = 0;
+    TIME_SLOTS.forEach(s => {
+      const v = Number(day[s.key]?.[field]);
+      if (!isNaN(v)) sum += v;
+    });
+    return sum;
+  }
+  function avgFor(day, field) {
+    const vals = TIME_SLOTS.map(s => day[s.key]?.[field])
+      .filter(v => v !== '' && v !== null && v !== undefined && !isNaN(Number(v)))
+      .map(Number);
+    if (!vals.length) return null;
+    return Math.round(vals.reduce((a, b) => a + b, 0) / vals.length);
+  }
+
+  // Calm color scale: green (low) -> honey (medium) -> dusty rose (high). No alarming red.
+  function levelColor(val) {
+    if (val === '' || val === null || val === undefined) return 'transparent';
+    const n = Number(val);
+    if (isNaN(n)) return 'transparent';
+    if (n === 0)  return '#FFFFFF';
+    if (n <= 1)   return '#E8EFD8'; // pale sage
+    if (n <= 2)   return '#D5E2BD'; // sage
+    if (n <= 3)   return '#E8DFB4'; // pale honey
+    if (n <= 4)   return '#E0CC8E'; // honey
+    if (n <= 5)   return '#D4B86A'; // golden honey
+    if (n <= 6)   return '#D4A574'; // warm amber
+    if (n <= 7)   return '#D4A5A5'; // soft coral
+    if (n <= 8)   return '#C99090'; // dusty rose
+    return '#B87878';               // deeper rose
+  }
+  function levelTextColor(val) {
+    const n = Number(val);
+    if (isNaN(n) || n === 0 || val === '') return '#2D3A2E';
+    if (n >= 7) return '#FFFFFF';
+    return '#2D3A2E';
+  }
+
+  // ---------- PERSISTENCE ----------
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
+    } catch (e) {
+      console.error('Save failed:', e);
+    }
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) state.data = JSON.parse(raw);
+    } catch (e) {
+      console.error('Load failed:', e);
+    }
+  }
+
+  // ---------- RENDERING ----------
+  const flowerSVG = `
+    <svg width="14" height="14" viewBox="0 0 32 32">
+      <g fill="currentColor">
+        <ellipse cx="16" cy="8" rx="4" ry="5"/>
+        <ellipse cx="16" cy="24" rx="4" ry="5"/>
+        <ellipse cx="8" cy="16" rx="5" ry="4"/>
+        <ellipse cx="24" cy="16" rx="5" ry="4"/>
+      </g>
+      <circle cx="16" cy="16" r="3.5" fill="#D4B86A"/>
+    </svg>`;
+
+  function renderTracker() {
+    // Date label
+    document.getElementById('date-label').textContent = formatLong(state.currentDate);
+    document.getElementById('date-sub').textContent = formatShort(state.currentDate);
+    document.getElementById('date-picker').value = state.currentDate;
+
+    // Disable next-day arrow if we're already at today
+    const today = dateKey(new Date());
+    document.getElementById('next-day').disabled = state.currentDate >= today;
+
+    // Today's-Goal heading reflects the visible day
+    const isToday = state.currentDate === today;
+    document.querySelector('.summary-card.goal h3').lastChild.textContent =
+      ' ' + (isToday ? "Today's Goal" : "Daily Goal");
+    document.querySelector('.summary-card.total h3').textContent =
+      isToday ? "Today's Total" : "Day's Total";
+
+    // Slot rows
+    const day = getDay(state.currentDate);
+    const container = document.getElementById('slots-container');
+    container.innerHTML = TIME_SLOTS.map(slot => {
+      const v = day[slot.key];
+      return `
+        <div class="slot">
+          <div class="slot-header">
+            <span class="flower-mark" style="color: var(--primary-light)">${flowerSVG}</span>
+            <span class="title">${slot.label}</span>
+          </div>
+          <div class="slot-grid">
+            <div class="field">
+              <div class="field-label">Rumination</div>
+              <input type="number" inputmode="numeric" min="0" step="any"
+                data-slot="${slot.key}" data-field="rumination"
+                value="${v.rumination}" placeholder="min">
+            </div>
+            <div class="field level">
+              <div class="field-label">Anxiety</div>
+              <input type="number" inputmode="numeric" min="0" max="10"
+                data-slot="${slot.key}" data-field="anxiety"
+                value="${v.anxiety}" placeholder="–"
+                style="background: ${levelColor(v.anxiety)}; color: ${levelTextColor(v.anxiety)};">
+            </div>
+            <div class="field level">
+              <div class="field-label">Stress</div>
+              <input type="number" inputmode="numeric" min="0" max="10"
+                data-slot="${slot.key}" data-field="stress"
+                value="${v.stress}" placeholder="–"
+                style="background: ${levelColor(v.stress)}; color: ${levelTextColor(v.stress)};">
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Notes
+    document.getElementById('notes-input').value = day.notes || '';
+
+    // Totals
+    renderTotals();
+
+    // Bind inputs
+    container.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('input', onFieldChange);
+      inp.addEventListener('blur', onFieldBlur);
+    });
+  }
+
+  function renderTotals() {
+    const day = getDay(state.currentDate);
+    const rum = totalFor(day, 'rumination');
+    document.getElementById('total-rumination').textContent =
+      (rum % 1 === 0 ? rum : rum.toFixed(2)) + ' min';
+  }
+
+  function onFieldChange(e) {
+    const slot = e.target.dataset.slot;
+    const field = e.target.dataset.field;
+    let val = e.target.value;
+    if ((field === 'anxiety' || field === 'stress') && val !== '') {
+      const n = Number(val);
+      if (n > 10) val = '10';
+      if (n < 0) val = '0';
+      e.target.value = val;
+      e.target.style.background = levelColor(val);
+      e.target.style.color = levelTextColor(val);
+    }
+    const day = ensureDay(state.currentDate);
+    day[slot][field] = val;
+    save();
+    renderTotals();
+  }
+
+  function onFieldBlur(e) {
+    // Clean up empty days (don't leave behind empty objects)
+    const day = state.data[state.currentDate];
+    if (!day) return;
+    const hasAny = TIME_SLOTS.some(s =>
+      ['rumination','anxiety','stress']
+        .some(f => day[s.key][f] !== '')
+    ) || (day.notes && day.notes.trim() !== '');
+    if (!hasAny) {
+      delete state.data[state.currentDate];
+      save();
+    }
+  }
+
+  // ---------- STATS SCREEN ----------
+  function renderStats() {
+    if (state.statsView === 'year') {
+      renderYearView();
+    } else {
+      renderDailyView();
+    }
+  }
+
+  function renderDailyView() {
+    const content = document.getElementById('stats-content');
+    const dates = Object.keys(state.data).sort().reverse();
+
+    if (dates.length === 0) {
+      content.innerHTML = emptyStateHTML();
+      return;
+    }
+
+    const tab = state.statsTab;
+    let rows = '';
+    dates.forEach(d => {
+      const day = state.data[d];
+      const total = totalFor(day, tab);
+      const anx = avgFor(day, 'anxiety');
+      const str = avgFor(day, 'stress');
+      const cells = TIME_SLOTS.map(s => {
+        const v = day[s.key]?.[tab];
+        return `<td>${v || ''}</td>`;
+      }).join('');
+      rows += `
+        <tr>
+          <td class="date-cell" data-date="${d}" title="Edit this day">${formatShort(d)}</td>
+          <td class="total-cell">${total || ''}</td>
+          ${cells}
+          <td style="background:${levelColor(anx)}; color:${levelTextColor(anx)}; font-weight:600">${anx ?? ''}</td>
+          <td style="background:${levelColor(str)}; color:${levelTextColor(str)}; font-weight:600">${str ?? ''}</td>
+        </tr>
+      `;
+    });
+
+    content.innerHTML = `
+      <div class="stats-table-wrap">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th style="text-align:left; padding-left:12px">Date</th>
+              <th>Total</th>
+              ${TIME_SLOTS.map(s => `<th>${s.short}</th>`).join('')}
+              <th>Anxiety</th>
+              <th>Stress</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div style="text-align:center; color: var(--text-mute); font-size:12px; margin-top:14px; font-family: 'Fraunces', serif; font-style: italic;">
+        Tap a date to jump back and edit that day
+      </div>
+    `;
+
+    content.querySelectorAll('.date-cell').forEach(cell => {
+      cell.addEventListener('click', () => {
+        state.currentDate = cell.dataset.date;
+        showScreen('tracker');
+      });
+    });
+  }
+
+  function renderYearView() {
+    const content = document.getElementById('stats-content');
+    const dates = Object.keys(state.data).sort();
+
+    if (dates.length === 0) {
+      content.innerHTML = emptyStateHTML();
+      return;
+    }
+
+    // Year starts from the first month with data
+    const first = parseKey(dates[0]);
+    const startYear = first.getFullYear();
+    const startMonth = first.getMonth();
+
+    const months = [];
+    for (let i = 0; i < 12; i++) {
+      const d = new Date(startYear, startMonth + i, 1);
+      months.push({
+        year: d.getFullYear(),
+        month: d.getMonth(),
+        label: d.toLocaleDateString('en-US', { month: 'short' }).charAt(0),
+        full: d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+      });
+    }
+
+    const metric = state.yearMetric;
+    let html = '';
+
+    // Header row: D\M + month initials
+    html += '<div class="heat-cell header day-num">D\\M</div>';
+    months.forEach(m => {
+      html += `<div class="heat-cell header" title="${m.full}">${m.label}</div>`;
+    });
+
+    // 31 day rows
+    for (let day = 1; day <= 31; day++) {
+      html += `<div class="heat-cell day-num">${day}</div>`;
+      months.forEach(m => {
+        const daysInMonth = new Date(m.year, m.month + 1, 0).getDate();
+        if (day > daysInMonth) {
+          html += '<div class="heat-cell empty"></div>';
+          return;
+        }
+        const key = `${m.year}-${String(m.month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayData = state.data[key];
+        if (!dayData) {
+          html += `<div class="heat-cell clickable" data-date="${key}" title="${key} — no entry"></div>`;
+          return;
+        }
+        const val = avgFor(dayData, metric);
+        const display = val !== null && val !== undefined ? val : '';
+        const bg = levelColor(val);
+        const fg = levelTextColor(val);
+        html += `<div class="heat-cell clickable" data-date="${key}" style="background:${bg}; color:${fg}" title="${key} — ${metric}: ${display || '—'}">${display}</div>`;
+      });
+    }
+
+    // Build legend
+    const legendItems = [0,1,2,3,4,5,6,7,8,9,10].map(n =>
+      `<span class="swatch"><span class="box" style="background:${levelColor(n)}"></span>${n}</span>`
+    ).join('');
+
+    content.innerHTML = `
+      <div class="metric-toggle" id="metric-toggle">
+        <button class="metric-btn ${metric === 'anxiety' ? 'active' : ''}" data-metric="anxiety">Anxiety</button>
+        <button class="metric-btn ${metric === 'stress' ? 'active' : ''}" data-metric="stress">Stress</button>
+      </div>
+      <div class="year-heatmap">${html}</div>
+      <div class="heat-legend">
+        <span class="label">scale</span>
+        ${legendItems}
+      </div>
+      <div style="text-align:center; color: var(--text-mute); font-size:12px; margin-top:14px; font-family: 'Fraunces', serif; font-style: italic;">
+        Tap a cell to jump to that day
+      </div>
+    `;
+
+    // Bind metric toggle
+    content.querySelectorAll('.metric-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.yearMetric = btn.dataset.metric;
+        renderYearView();
+      });
+    });
+
+    // Bind cell clicks
+    content.querySelectorAll('.heat-cell.clickable').forEach(cell => {
+      cell.addEventListener('click', () => {
+        state.currentDate = cell.dataset.date;
+        showScreen('tracker');
+      });
+    });
+  }
+
+  function emptyStateHTML() {
+    return `
+      <div class="empty-state">
+        <div class="flower-big">
+          <svg width="48" height="48" viewBox="0 0 32 32">
+            <g fill="currentColor">
+              <ellipse cx="16" cy="8" rx="4" ry="5"/>
+              <ellipse cx="16" cy="24" rx="4" ry="5"/>
+              <ellipse cx="8" cy="16" rx="5" ry="4"/>
+              <ellipse cx="24" cy="16" rx="5" ry="4"/>
+            </g>
+            <circle cx="16" cy="16" r="3.5" fill="#D4B86A"/>
+          </svg>
+        </div>
+        <div class="text">No entries yet — your history will bloom here as you track.</div>
+      </div>
+    `;
+  }
+
+  // ---------- SCREEN SWITCH ----------
+  function showScreen(name) {
+    state.screen = name;
+    document.getElementById('tracker-screen').classList.toggle('hidden', name !== 'tracker');
+    document.getElementById('stats-screen').classList.toggle('active', name === 'stats');
+    if (name === 'tracker') renderTracker();
+    else renderStats();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // ---------- TOAST ----------
+  let toastTimer = null;
+  function toast(msg, variant = 'ok') {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.remove('warn');
+    if (variant === 'warn') el.classList.add('warn');
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+  }
+
+  // ---------- DATA: EXPORT / IMPORT / RESET ----------
+  async function exportData() {
+    const payload = {
+      app: 'self-awareness',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      data: state.data,
+    };
+    const text = JSON.stringify(payload, null, 2);
+    const filename = `self-awareness-backup-${dateKey(new Date())}.json`;
+    const blob = new Blob([text], { type: 'application/json' });
+
+    // Try native share sheet (best on mobile for sending to WhatsApp, etc.)
+    if (navigator.canShare && navigator.share) {
+      try {
+        const file = new File([blob], filename, { type: 'application/json' });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: 'Self Awareness Backup',
+            text: 'Backup of my self-awareness tracking data',
+          });
+          toast('Backup shared');
+          return true;
+        }
+      } catch (err) {
+        if (err.name === 'AbortError') return false; // user cancelled
+        // otherwise fall through to download
+      }
+    }
+
+    // Fallback: download
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+    toast('Backup downloaded');
+    return true;
+  }
+
+  function importData() {
+    document.getElementById('import-file').click();
+  }
+
+  async function handleImportFile(e) {
+    const file = e.target.files[0];
+    e.target.value = ''; // reset so the same file can be picked again
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+
+      // Accept both the new envelope format and a raw {date: day} object
+      let incoming;
+      if (parsed && typeof parsed === 'object' && parsed.data && typeof parsed.data === 'object') {
+        incoming = parsed.data;
+      } else if (parsed && typeof parsed === 'object') {
+        incoming = parsed;
+      } else {
+        throw new Error('Unrecognized file format');
+      }
+
+      // Light validation: keys should look like YYYY-MM-DD
+      const keys = Object.keys(incoming);
+      const validKeys = keys.filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k));
+      if (validKeys.length === 0) {
+        throw new Error('No valid entries found in file');
+      }
+
+      const existingCount = Object.keys(state.data).length;
+      let mode = 'replace';
+      if (existingCount > 0) {
+        const choice = confirm(
+          `Import ${validKeys.length} day(s) from backup.\n\n` +
+          `You currently have ${existingCount} day(s) saved.\n\n` +
+          `Press OK to MERGE (imported entries overwrite existing ones for the same date).\n` +
+          `Press Cancel to REPLACE all existing data with the backup.`
+        );
+        mode = choice ? 'merge' : 'replace';
+      }
+
+      if (mode === 'replace') {
+        state.data = {};
+      }
+      validKeys.forEach(k => {
+        state.data[k] = incoming[k];
+      });
+      save();
+      renderTracker();
+      toast(`Imported ${validKeys.length} day(s) — ${mode === 'merge' ? 'merged' : 'replaced'}`);
+    } catch (err) {
+      console.error('Import failed:', err);
+      toast('Could not import: ' + err.message, 'warn');
+    }
+  }
+
+  async function resetData() {
+    const count = Object.keys(state.data).length;
+    if (count === 0) {
+      toast('Nothing to reset', 'warn');
+      return;
+    }
+
+    const first = confirm(
+      `This will permanently delete all ${count} day(s) of tracking data.\n\n` +
+      `A backup file will be saved/shared first as a safety net.\n\n` +
+      `Proceed?`
+    );
+    if (!first) return;
+
+    // Mandatory auto-export before wipe
+    const exported = await exportData();
+    if (!exported) {
+      toast('Reset cancelled — backup was not completed', 'warn');
+      return;
+    }
+
+    const finalConfirm = confirm(
+      'Backup saved. Are you absolutely sure you want to delete everything?\n\n' +
+      'This cannot be undone.'
+    );
+    if (!finalConfirm) return;
+
+    state.data = {};
+    save();
+    renderTracker();
+    toast('All data has been cleared');
+  }
+
+  // ---------- EVENT BINDINGS ----------
+  function bind() {
+    document.getElementById('prev-day').addEventListener('click', () => {
+      state.currentDate = shiftDate(state.currentDate, -1);
+      renderTracker();
+    });
+    document.getElementById('next-day').addEventListener('click', () => {
+      const today = dateKey(new Date());
+      if (state.currentDate < today) {
+        state.currentDate = shiftDate(state.currentDate, 1);
+        renderTracker();
+      }
+    });
+    document.getElementById('today-btn').addEventListener('click', () => {
+      state.currentDate = dateKey(new Date());
+      renderTracker();
+    });
+    document.getElementById('date-display').addEventListener('click', () => {
+      const picker = document.getElementById('date-picker');
+      if (picker.showPicker) picker.showPicker();
+      else picker.click();
+    });
+    document.getElementById('date-picker').addEventListener('change', (e) => {
+      if (e.target.value) {
+        state.currentDate = e.target.value;
+        renderTracker();
+      }
+    });
+    document.getElementById('notes-input').addEventListener('input', (e) => {
+      ensureDay(state.currentDate).notes = e.target.value;
+      save();
+    });
+    document.getElementById('show-stats-btn').addEventListener('click', () => showScreen('stats'));
+    document.getElementById('back-btn').addEventListener('click', () => showScreen('tracker'));
+
+    // View tabs (Daily / Year)
+    document.querySelectorAll('.view-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        state.statsView = tab.dataset.view;
+        renderStats();
+      });
+    });
+
+    // Data management
+    document.getElementById('export-btn').addEventListener('click', exportData);
+    document.getElementById('import-btn').addEventListener('click', importData);
+    document.getElementById('reset-btn').addEventListener('click', resetData);
+    document.getElementById('import-file').addEventListener('change', handleImportFile);
+  }
+
+  // ---------- INIT ----------
+  load();
+  bind();
+  renderTracker();
+</script>
+
+
+
+</body></html>
