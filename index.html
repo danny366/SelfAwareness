@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)file:///C:/Users/dron/Downloads/self-awareness_6.html -->
+<!-- saved from url=(0054)file:///C:/Users/dron/Downloads/self-awareness_10.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -310,12 +310,56 @@
     border-color: var(--primary);
     background-color: white;
   }
-  .field.level select {
-    text-align: center;
-    text-align-last: center;
-    padding: 10px 18px 10px 8px;
+  .level-wrap {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    overflow: hidden;
+    transition: border 0.15s, background-color 0.15s;
+  }
+  .level-wrap:focus-within {
+    border-color: var(--primary);
+  }
+  .level-wrap .level-select {
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 15px;
+    border: none;
+    background: transparent;
+    background-image: none;
+    color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+  }
+  .level-wrap .level-select:focus {
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+  .level-wrap .level-select option {
+    color: var(--text);
+    background-color: white;
+    font-weight: 500;
+    text-align: left;
+    padding: 6px 10px;
+  }
+  .level-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
     font-weight: 600;
-    background-position: right 5px center;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
   }
   .field input:focus {
     outline: none;
@@ -907,11 +951,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="wake" data-field="anxiety" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="wake" data-field="anxiety"><option value="" selected="">—</option><option value="0">0 No Anxiety</option><option value="1">1 Almost No Anxiety</option><option value="2">2 Very Low Anxiety</option><option value="3">3 Low Anxiety</option><option value="4">4 Noticeable Anxiety</option><option value="5">5 Bothersome Anxiety</option><option value="6">6 Medium Anxiety</option><option value="7">7 Moderate Anxiety</option><option value="8">8 Moderate-High Anxiety</option><option value="9">9 High Anxiety</option><option value="10">10 Very High Anxiety</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="wake" data-field="stress" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="wake" data-field="stress"><option value="" selected="">—</option><option value="0">0 No Stress</option><option value="1">1 Almost No Stress</option><option value="2">2 Very Low Stress</option><option value="3">3 Low Stress</option><option value="4">4 Noticeable Stress</option><option value="5">5 Bothersome Stress</option><option value="6">6 Medium Stress</option><option value="7">7 Moderate Stress</option><option value="8">8 Moderate-High Stress</option><option value="9">9 High Stress</option><option value="10">10 Very High Stress</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
           </div>
         </div>
@@ -937,11 +987,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="9-12" data-field="anxiety" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="9-12" data-field="anxiety"><option value="" selected="">—</option><option value="0">0 No Anxiety</option><option value="1">1 Almost No Anxiety</option><option value="2">2 Very Low Anxiety</option><option value="3">3 Low Anxiety</option><option value="4">4 Noticeable Anxiety</option><option value="5">5 Bothersome Anxiety</option><option value="6">6 Medium Anxiety</option><option value="7">7 Moderate Anxiety</option><option value="8">8 Moderate-High Anxiety</option><option value="9">9 High Anxiety</option><option value="10">10 Very High Anxiety</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="9-12" data-field="stress" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="9-12" data-field="stress"><option value="" selected="">—</option><option value="0">0 No Stress</option><option value="1">1 Almost No Stress</option><option value="2">2 Very Low Stress</option><option value="3">3 Low Stress</option><option value="4">4 Noticeable Stress</option><option value="5">5 Bothersome Stress</option><option value="6">6 Medium Stress</option><option value="7">7 Moderate Stress</option><option value="8">8 Moderate-High Stress</option><option value="9">9 High Stress</option><option value="10">10 Very High Stress</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
           </div>
         </div>
@@ -967,11 +1023,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="12-3" data-field="anxiety" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="12-3" data-field="anxiety"><option value="" selected="">—</option><option value="0">0 No Anxiety</option><option value="1">1 Almost No Anxiety</option><option value="2">2 Very Low Anxiety</option><option value="3">3 Low Anxiety</option><option value="4">4 Noticeable Anxiety</option><option value="5">5 Bothersome Anxiety</option><option value="6">6 Medium Anxiety</option><option value="7">7 Moderate Anxiety</option><option value="8">8 Moderate-High Anxiety</option><option value="9">9 High Anxiety</option><option value="10">10 Very High Anxiety</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="12-3" data-field="stress" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="12-3" data-field="stress"><option value="" selected="">—</option><option value="0">0 No Stress</option><option value="1">1 Almost No Stress</option><option value="2">2 Very Low Stress</option><option value="3">3 Low Stress</option><option value="4">4 Noticeable Stress</option><option value="5">5 Bothersome Stress</option><option value="6">6 Medium Stress</option><option value="7">7 Moderate Stress</option><option value="8">8 Moderate-High Stress</option><option value="9">9 High Stress</option><option value="10">10 Very High Stress</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
           </div>
         </div>
@@ -997,11 +1059,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="3-6" data-field="anxiety" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="3-6" data-field="anxiety"><option value="" selected="">—</option><option value="0">0 No Anxiety</option><option value="1">1 Almost No Anxiety</option><option value="2">2 Very Low Anxiety</option><option value="3">3 Low Anxiety</option><option value="4">4 Noticeable Anxiety</option><option value="5">5 Bothersome Anxiety</option><option value="6">6 Medium Anxiety</option><option value="7">7 Moderate Anxiety</option><option value="8">8 Moderate-High Anxiety</option><option value="9">9 High Anxiety</option><option value="10">10 Very High Anxiety</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="3-6" data-field="stress" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="3-6" data-field="stress"><option value="" selected="">—</option><option value="0">0 No Stress</option><option value="1">1 Almost No Stress</option><option value="2">2 Very Low Stress</option><option value="3">3 Low Stress</option><option value="4">4 Noticeable Stress</option><option value="5">5 Bothersome Stress</option><option value="6">6 Medium Stress</option><option value="7">7 Moderate Stress</option><option value="8">8 Moderate-High Stress</option><option value="9">9 High Stress</option><option value="10">10 Very High Stress</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1027,11 +1095,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="6-9" data-field="anxiety" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="6-9" data-field="anxiety"><option value="" selected="">—</option><option value="0">0 No Anxiety</option><option value="1">1 Almost No Anxiety</option><option value="2">2 Very Low Anxiety</option><option value="3">3 Low Anxiety</option><option value="4">4 Noticeable Anxiety</option><option value="5">5 Bothersome Anxiety</option><option value="6">6 Medium Anxiety</option><option value="7">7 Moderate Anxiety</option><option value="8">8 Moderate-High Anxiety</option><option value="9">9 High Anxiety</option><option value="10">10 Very High Anxiety</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="6-9" data-field="stress" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="6-9" data-field="stress"><option value="" selected="">—</option><option value="0">0 No Stress</option><option value="1">1 Almost No Stress</option><option value="2">2 Very Low Stress</option><option value="3">3 Low Stress</option><option value="4">4 Noticeable Stress</option><option value="5">5 Bothersome Stress</option><option value="6">6 Medium Stress</option><option value="7">7 Moderate Stress</option><option value="8">8 Moderate-High Stress</option><option value="9">9 High Stress</option><option value="10">10 Very High Stress</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1057,11 +1131,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="9-m" data-field="anxiety" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="9-m" data-field="anxiety"><option value="" selected="">—</option><option value="0">0 No Anxiety</option><option value="1">1 Almost No Anxiety</option><option value="2">2 Very Low Anxiety</option><option value="3">3 Low Anxiety</option><option value="4">4 Noticeable Anxiety</option><option value="5">5 Bothersome Anxiety</option><option value="6">6 Medium Anxiety</option><option value="7">7 Moderate Anxiety</option><option value="8">8 Moderate-High Anxiety</option><option value="9">9 High Anxiety</option><option value="10">10 Very High Anxiety</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="9-m" data-field="stress" style="background-color: transparent; color: #2D3A2E;"><option value="" selected="">—</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+              <div class="level-wrap" style="background-color: transparent; color: #2D3A2E;">
+                <select class="level-select" data-slot="9-m" data-field="stress"><option value="" selected="">—</option><option value="0">0 No Stress</option><option value="1">1 Almost No Stress</option><option value="2">2 Very Low Stress</option><option value="3">3 Low Stress</option><option value="4">4 Noticeable Stress</option><option value="5">5 Bothersome Stress</option><option value="6">6 Medium Stress</option><option value="7">7 Moderate Stress</option><option value="8">8 Moderate-High Stress</option><option value="9">9 High Stress</option><option value="10">10 Very High Stress</option></select>
+                <span class="level-overlay">–</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1283,6 +1363,17 @@
 
   // ---------- RENDERING ----------
   // ---------- DROPDOWN OPTIONS ----------
+  const LEVEL_WORDS = [
+    'No', 'Almost No', 'Very Low', 'Low', 'Noticeable',
+    'Bothersome', 'Medium', 'Moderate', 'Moderate-High',
+    'High', 'Very High'
+  ];
+
+  function levelLabel(field, val) {
+    const noun = field === 'stress' ? 'Stress' : 'Anxiety';
+    return `${val} ${LEVEL_WORDS[val]} ${noun}`;
+  }
+
   function ruminationOptions(selected) {
     const sel = String(selected ?? '');
     let opts = `<option value=""${sel === '' ? ' selected' : ''}>—</option>`;
@@ -1292,11 +1383,11 @@
     return opts;
   }
 
-  function levelOptions(selected) {
+  function levelOptions(field, selected) {
     const sel = String(selected ?? '');
     let opts = `<option value=""${sel === '' ? ' selected' : ''}>—</option>`;
     for (let v = 0; v <= 10; v++) {
-      opts += `<option value="${v}"${sel === String(v) ? ' selected' : ''}>${v}</option>`;
+      opts += `<option value="${v}"${sel === String(v) ? ' selected' : ''}>${levelLabel(field, v)}</option>`;
     }
     return opts;
   }
@@ -1347,13 +1438,17 @@
             </div>
             <div class="field level">
               <div class="field-label">Anxiety</div>
-              <select data-slot="${slot.key}" data-field="anxiety"
-                style="background-color: ${levelColor(v.anxiety)}; color: ${levelTextColor(v.anxiety)};">${levelOptions(v.anxiety)}</select>
+              <div class="level-wrap" style="background-color: ${levelColor(v.anxiety)}; color: ${levelTextColor(v.anxiety)};">
+                <select class="level-select" data-slot="${slot.key}" data-field="anxiety">${levelOptions('anxiety', v.anxiety)}</select>
+                <span class="level-overlay">${v.anxiety === '' ? '–' : v.anxiety}</span>
+              </div>
             </div>
             <div class="field level">
               <div class="field-label">Stress</div>
-              <select data-slot="${slot.key}" data-field="stress"
-                style="background-color: ${levelColor(v.stress)}; color: ${levelTextColor(v.stress)};">${levelOptions(v.stress)}</select>
+              <div class="level-wrap" style="background-color: ${levelColor(v.stress)}; color: ${levelTextColor(v.stress)};">
+                <select class="level-select" data-slot="${slot.key}" data-field="stress">${levelOptions('stress', v.stress)}</select>
+                <span class="level-overlay">${v.stress === '' ? '–' : v.stress}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1385,8 +1480,13 @@
     const field = e.target.dataset.field;
     const val = e.target.value;
     if (field === 'anxiety' || field === 'stress') {
-      e.target.style.backgroundColor = levelColor(val);
-      e.target.style.color = levelTextColor(val);
+      const wrap = e.target.closest('.level-wrap');
+      if (wrap) {
+        wrap.style.backgroundColor = levelColor(val);
+        wrap.style.color = levelTextColor(val);
+        const overlay = wrap.querySelector('.level-overlay');
+        if (overlay) overlay.textContent = val === '' ? '–' : val;
+      }
     }
     const day = ensureDay(state.currentDate);
     day[slot][field] = val;
